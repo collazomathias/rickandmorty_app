@@ -1,11 +1,17 @@
 $primary_color: gray;
 
 .input {
-    width: 50%;
+    width: 40%;
     border-radius: 8px;
     border: 2px solid $primary_color;
     padding: 10px 15px;
     &:focus {
         outline: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .input {
+        width: 90%;
     }
 }

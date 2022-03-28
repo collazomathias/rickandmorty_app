@@ -13,8 +13,6 @@ export const Episodes = () => {
     let episodes_count_url = `https://rickandmortyapi.com/api/episode`;
     let episodes_url = `https://rickandmortyapi.com/api/episode/${episode}`;
 
-    console.log(episodesCount);
-
     useEffect(() => {
         (async function() {
             let data = await fetch(episodes_url).then(response => response.json());
@@ -41,13 +39,13 @@ export const Episodes = () => {
                 <h5 className="text-center">Air date: {air_date === "" ? "Unknown" : air_date}.</h5>
             </div>
             <div className="row">
-                <div className="col-3">
+                <div className="col-lg-3 col-12">
                     <h4 className="text-center mb-4">Pick an episode:</h4>
-                    <InputGroup setEpisode={setEpisode} name={name} count={episodesCount} />
+                    <InputGroup setEpisode={setEpisode} name="Episode" count={episodesCount} />
                 </div>
-                <div className="col-8">
+                <div className="col-lg-8 col-12">
                     <div className="row">
-                        <Elements results={results} />
+                        <Elements page="/episodes/" results={results} />
                     </div>
                 </div>
             </div>

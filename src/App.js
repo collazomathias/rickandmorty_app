@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
+import { ElementDetails } from "./components/elements/ElementDetails.jsx";
 
 function App() {
     return (
@@ -22,8 +23,11 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/:id" element={<ElementDetails />} />
                 <Route path="/episodes" element={<Episodes />} />
+                <Route path="/episodes/:id" element={<ElementDetails />} />
                 <Route path="/location" element={<Location />} />
+                <Route path="/location/:id" element={<ElementDetails />} />
             </Routes>
         </Router>
     );
@@ -50,14 +54,16 @@ const Home = () => {
 
     return (
         <>
+            <h1 className="text-center mb-4">Characters</h1>
+
             <Search setSearch={setSearch} setPageNumber={setPageNumber} />
             
             <div className="container">
                 <div className="row">
                     <Filters setStatus={setStatus} setGender={setGender} setSpecies={setSpecies} setPageNumber={setPageNumber} />
-                    <div className="col-8">
+                    <div className="col-lg-8 col-12">
                         <div className="row">
-                            <Elements results={results} />
+                            <Elements page="/" results={results} />
                         </div>
                     </div>
                 </div>

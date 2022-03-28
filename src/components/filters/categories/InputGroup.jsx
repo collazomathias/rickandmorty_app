@@ -10,7 +10,7 @@ export const InputGroup = ({count, name, setEpisode}) => {
                 {
                     [...Array(count).keys()].map(element => {
                         return (
-                            <option key={element + 1} value={element + 1}>Episode N°{element + 1}</option>
+                            <option key={element + 1} value={element + 1}>{name} N°{element + 1}</option>
                         );
                     })
                 }

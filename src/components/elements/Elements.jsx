@@ -1,16 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Elements.module.scss";
 
 
 
-export const Elements = ({ results }) => {
+export const Elements = ({ results, page }) => {
     let display;
     if(results){
         display = results.map(element => {
             let { id, image, name, location, status } = element;
             return (
-                <div key={id} className="col-4 mb-4 position-relative">
-                    <div className={styles.elements}>
+                <Link to={`${page}${id}`} style={{textDecoration: "none"}}
+                    key={id} 
+                    className="col-lg-4 col-md-6 col-12 mb-4 position-relative text-dark">
+                    <div className={`${styles.elements} d-flex flex-column justify-content-center`}>
                         <img src={image} alt="" className={`${styles.image} img-fluid`} />
                         <div className={styles.content}>
                             <div className="fs-4 fw-bold mb-4">{name}</div>
@@ -41,7 +44,7 @@ export const Elements = ({ results }) => {
                             );
                         }
                     })()}
-                </div>
+                </Link>
             );
         });
     } else {
