@@ -25,7 +25,7 @@ export const Species = ({setSpecies, setPageNumber}) => {
                     data-bs-target="#collapseTwo"
                     aria-expanded="false"
                     aria-controls="collapseTwo">
-                    Gender
+                    Species
                 </button>
             </h2>
             <div 
