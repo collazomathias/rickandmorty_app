@@ -13,9 +13,12 @@ function App() {
     const [ pageNumber, setPageNumber ] = useState(1);
     const [ data, setData ] = useState([]);
     const [ search, setSearch ] = useState("");
+    const [ status, setStatus ] = useState("");
+    const [ gender, setGender ] = useState("");
+    const [ species, setSpecies ] = useState("");
     let { info, results } = data;
 
-    let api_url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+    let api_url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
     useEffect(() => {
         (async function() {
@@ -31,9 +34,7 @@ function App() {
             
             <div className="container">
                 <div className="row">
-                    <div className="col-3">
-                        <Filters />
-                    </div>
+                    <Filters setStatus={setStatus} setGender={setGender} setSpecies={setSpecies} setPageNumber={setPageNumber} />
                     <div className="col-8">
                         <div className="row">
                             <Elements results={results} />

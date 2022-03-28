@@ -3,7 +3,7 @@ import styles from "./Elements.module.scss";
 
 
 
-export const Elements = ({ results = [] }) => {
+export const Elements = ({ results }) => {
     let display;
     if(results){
         display = results.map(element => {
