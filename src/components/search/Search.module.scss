@@ -1,0 +1,11 @@
+$primary_color: gray;
+
+.input {
+    width: 50%;
+    border-radius: 8px;
+    border: 2px solid $primary_color;
+    padding: 10px 15px;
+    &:focus {
+        outline: none;
+    }
+}

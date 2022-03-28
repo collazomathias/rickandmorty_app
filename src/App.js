@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import { Filters } from "./components/filters/Filters.jsx";
 import { Elements } from "./components/elements/Elements.jsx";
-
+import { Pagination } from "./components/pagination/Pagination.jsx";
+import { Search } from "./components/search/Search.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
@@ -10,11 +10,12 @@ import "./index.css";
 
 function App() {
 
-    let [ pageNumber, setPageNumber ] = useState(1);
-    let [ data, setData ] = useState([]);
+    const [ pageNumber, setPageNumber ] = useState(1);
+    const [ data, setData ] = useState([]);
+    const [ search, setSearch ] = useState("");
     let { info, results } = data;
 
-    let api_url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
+    let api_url = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
 
     useEffect(() => {
         (async function() {
@@ -26,6 +27,8 @@ function App() {
     return (
         <>
             <h1 className="text-center ubuntu my-5 fw-bold">Ricky <span className="text-primary">&</span> Morty</h1>
+            <Search setSearch={setSearch} setPageNumber={setPageNumber} />
+            
             <div className="container">
                 <div className="row">
                     <div className="col-3">
@@ -38,6 +41,8 @@ function App() {
                     </div>
                 </div>
             </div>
+
+            <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber} />
         </>
     );
 }
